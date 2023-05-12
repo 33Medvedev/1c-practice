@@ -38,8 +38,8 @@
 			<Metadata name="Document.ПриёмЗаявок.Attribute.Почта" id="dbabd447-a228-4b49-9a07-4033a31cde96"/>
 			<Metadata name="Document.ПриёмЗаявок.Attribute.ЗаявкаВыполнена" id="ea17c87e-84ba-422e-aec0-f779c16f3e1c"/>
 		</Metadata>
-		<Metadata name="Document.ПриёмЗаявок.Form.ФормаДокумента" id="10bc8008-f725-4790-ab09-497c484240ef" configVersion="e785f077ed15664b9522b170800278ea00000000"/>
-		<Metadata name="Document.ПриёмЗаявок.Form.ФормаДокумента.Form" id="10bc8008-f725-4790-ab09-497c484240ef.0" configVersion="27c183047d05a644a5693c2bf808054a00000000"/>
+		<Metadata name="Document.ПриёмЗаявок.Form.ФормаДокумента" id="10bc8008-f725-4790-ab09-497c484240ef" configVersion="3eda2de7e70118439a8f034d45af7e7c00000000"/>
+		<Metadata name="Document.ПриёмЗаявок.Form.ФормаДокумента.Form" id="10bc8008-f725-4790-ab09-497c484240ef.0" configVersion="2de20353ea84644f9250aeb6b2b0134100000000"/>
 		<Metadata name="Document.ПриёмЗаявок.ObjectModule" id="c8df36b6-de29-4bcd-9a88-2f8e7131bbb9.0" configVersion="2abeec70f425f948a01ac702bc58fb3a00000000"/>
 		<Metadata name="InformationRegister.Цены" id="5e0aef83-a571-4fbb-8358-df94a38d6406" configVersion="023fb7dddf534a419fa6a3e9298018fd00000000">
 			<Metadata name="InformationRegister.Цены.Dimension.Услуга" id="1305ed1b-883d-4985-8abc-11ae9d24edff"/>

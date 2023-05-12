@@ -36,4 +36,5 @@
 {4,"_$InfoBase$_.DumpStart",15},
 {4,"_$InfoBase$_.DumpFinish",16},
 {5,13bb5517-41db-4399-8a44-9a60f767e1d7,"РегистрНакопления.ПроданныеУслуги",8},
-{4,"_$Transaction$_.Rollback",17}
+{4,"_$Transaction$_.Rollback",17},
+{4,"_$InfoBase$_.DumpError",18}
