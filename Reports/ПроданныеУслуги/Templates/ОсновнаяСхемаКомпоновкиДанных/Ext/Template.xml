@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetUnion">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Клиент</dataPath>
+			<field>Клиент</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаВыполнения</dataPath>
+			<field>ДатаВыполнения</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТелефонКлиента</dataPath>
+			<field>ТелефонКлиента</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Адрес</dataPath>
+			<field>Адрес</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Бригада</dataPath>
+			<field>Бригада</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Услуги.Услуги</dataPath>
+			<field>Услуги.Услуги</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Услуги</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Услуги.Услуги.Цена</dataPath>
+			<field>Услуги.Услуги.Цена</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цена</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<item xsi:type="DataSetQuery">
+			<name>НаборДанных1</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Клиент</dataPath>
+				<field>Клиент</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ДатаВыполнения</dataPath>
+				<field>ДатаВыполнения</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ТелефонКлиента</dataPath>
+				<field>ТелефонКлиента</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Адрес</dataPath>
+				<field>Адрес</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Бригада</dataPath>
+				<field>Бригада</field>
+			</field>
+			<dataSource>ИсточникДанных1</dataSource>
+			<query>ВЫБРАТЬ
+	ПриёмЗаявок.ДатаВыполнения КАК ДатаВыполнения,
+	ПриёмЗаявок.Клиент КАК Клиент,
+	ПриёмЗаявок.ТелефонКлиента КАК ТелефонКлиента,
+	ПриёмЗаявок.Адрес КАК Адрес,
+	ПриёмЗаявок.Бригада КАК Бригада
+ИЗ
+	Документ.ПриёмЗаявок КАК ПриёмЗаявок
+ГДЕ
+	ПриёмЗаявок.ЗаявкаВыполнена = ИСТИНА</query>
+		</item>
+		<item xsi:type="DataSetQuery">
+			<name>НаборДанных2</name>
+			<field xsi:type="DataSetFieldNestedDataSet">
+				<dataPath>Услуги</dataPath>
+				<field>Услуги</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Услуги.Услуги</dataPath>
+				<field>Услуги.УслугиНаименование</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Услуги.Услуги.Цена</dataPath>
+				<field>Услуги.Цена</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ДатаВыполнения</dataPath>
+				<field>ДатаВыполнения</field>
+			</field>
+			<dataSource>ИсточникДанных1</dataSource>
+			<query>ВЫБРАТЬ
+	ПриёмЗаявок.Услуги.(
+		Услуги.Наименование КАК УслугиНаименование,
+		Цена КАК Цена
+	) КАК Услуги,
+	ПриёмЗаявок.ДатаВыполнения КАК ДатаВыполнения
+ИЗ
+	Документ.ПриёмЗаявок КАК ПриёмЗаявок
+ГДЕ
+	ПриёмЗаявок.ЗаявкаВыполнена = ИСТИНА</query>
+			<useQueryGroupIfPossible>false</useQueryGroupIfPossible>
+		</item>
+	</dataSet>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ДатаВыполнения</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Клиент</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ТелефонКлиента</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Адрес</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Бригада</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Услуги.Услуги</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Услуги.Услуги.Цена</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Horizontally</dcsset:placement>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>ДатаВыполнения</dcsset:field>
+					<dcsset:orderType>Desc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МакетОформления</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">Море</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>РасположениеРесурсов</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionResourcesPlacement">Vertically</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ТипЗаголовкаПолей</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionFieldsTitleType">Short</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ДатаВыполнения</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>
